@@ -1,6 +1,5 @@
 package cz.livesport.rps
 
-import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import cz.livesport.business.StateManager
 import cz.livesport.business.ViewStateFactory
 import cz.livesport.business.ViewStateProvider
@@ -32,7 +31,6 @@ class RPSViewStateProvider internal constructor(
     )
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    @NativeCoroutines
     override fun getViewState(): Flow<StoreReadResponse<RPSViewState>> =
         combine(periodicUpdater(), stateManager.state) { _, state ->
             state

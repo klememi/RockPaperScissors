@@ -11,8 +11,6 @@
 		4838ADE42AA662C1006CC16E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838ADE32AA662C1006CC16E /* ContentView.swift */; };
 		4838ADE62AA662C2006CC16E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4838ADE52AA662C2006CC16E /* Assets.xcassets */; };
 		4838ADEA2AA662C2006CC16E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4838ADE92AA662C2006CC16E /* Preview Assets.xcassets */; };
-		4838ADFC2AA71A4F006CC16E /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 4838ADFB2AA71A4F006CC16E /* KMPNativeCoroutinesAsync */; };
-		4838ADFE2AA71A4F006CC16E /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4838ADFD2AA71A4F006CC16E /* KMPNativeCoroutinesCore */; };
 		4838AE0E2AA855E9006CC16E /* RPSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4838AE0D2AA855E8006CC16E /* RPSKit.framework */; };
 		4838AE0F2AA855E9006CC16E /* RPSKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4838AE0D2AA855E8006CC16E /* RPSKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4838AE122AA87C58006CC16E /* MatchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838AE112AA87C58006CC16E /* MatchRow.swift */; };
@@ -55,8 +53,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4838AE0E2AA855E9006CC16E /* RPSKit.framework in Frameworks */,
-				4838ADFC2AA71A4F006CC16E /* KMPNativeCoroutinesAsync in Frameworks */,
-				4838ADFE2AA71A4F006CC16E /* KMPNativeCoroutinesCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,8 +128,6 @@
 			);
 			name = RockPaperScissors;
 			packageProductDependencies = (
-				4838ADFB2AA71A4F006CC16E /* KMPNativeCoroutinesAsync */,
-				4838ADFD2AA71A4F006CC16E /* KMPNativeCoroutinesCore */,
 			);
 			productName = RockPaperScissors;
 			productReference = 4838ADDE2AA662C1006CC16E /* RockPaperScissors.app */;
@@ -164,7 +158,6 @@
 			);
 			mainGroup = 4838ADD52AA662C1006CC16E;
 			packageReferences = (
-				4838ADFA2AA71A4F006CC16E /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
 			);
 			productRefGroup = 4838ADDF2AA662C1006CC16E /* Products */;
 			projectDirPath = "";
@@ -445,30 +438,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		4838ADFA2AA71A4F006CC16E /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rickclephas/KMP-NativeCoroutines.git";
-			requirement = {
-				kind = exactVersion;
-				version = "1.0.0-ALPHA-10";
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		4838ADFB2AA71A4F006CC16E /* KMPNativeCoroutinesAsync */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4838ADFA2AA71A4F006CC16E /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
-			productName = KMPNativeCoroutinesAsync;
-		};
-		4838ADFD2AA71A4F006CC16E /* KMPNativeCoroutinesCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4838ADFA2AA71A4F006CC16E /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
-			productName = KMPNativeCoroutinesCore;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4838ADD62AA662C1006CC16E /* Project object */;
 }

@@ -1,3 +1,5 @@
+import RPSKit
+
 struct Project: Hashable {
 	let code: String
 	let name: String

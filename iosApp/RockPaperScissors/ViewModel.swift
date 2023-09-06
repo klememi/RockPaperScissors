@@ -1,5 +1,5 @@
-import KMPNativeCoroutinesAsync
 import RPSKit
+import SwiftUI
 
 final class ViewModel: ObservableObject {
 
@@ -55,14 +55,12 @@ final class ViewModel: ObservableObject {
 
 	@MainActor
 	func run() async {
-		do {
-			for try await response in asyncSequence(for: viewStateProvider.getViewState()) {
-				if let viewState = response.dataOrNull() {
-					matches = viewState.rows
-					title = viewState.title
-					isLoading = false
-				}
+		for await response in viewStateProvider.getViewState() {
+			if let viewState = response.dataOrNull() {
+				matches = viewState.rows
+				title = viewState.title
+				isLoading = false
 			}
-		} catch {}
+		}
 	}
 }
