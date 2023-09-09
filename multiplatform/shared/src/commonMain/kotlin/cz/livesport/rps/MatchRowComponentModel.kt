@@ -1,15 +1,16 @@
 package cz.livesport.rps
 
-import cz.livesport.business.EmptyConfiguration
-import cz.livesport.business.UIComponentModel
+interface UIComponentModel<CONFIGURATION : Any> {
+    val configuration: CONFIGURATION?
+}
 
 data class MatchRowComponentModel(
     val participantA: Participant,
     val participantB: Participant,
     val rounds: String,
     val isLive: Boolean,
-    override val configuration: EmptyConfiguration? = null
-) : UIComponentModel<EmptyConfiguration> {
+    override val configuration: Unit? = null
+): UIComponentModel<Unit> {
 
     data class Participant(
         val name: String,

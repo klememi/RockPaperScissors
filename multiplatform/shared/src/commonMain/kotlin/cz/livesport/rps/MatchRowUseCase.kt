@@ -1,8 +1,13 @@
 package cz.livesport.rps
 
-import cz.livesport.business.UseCase
 import cz.livesport.networking.MatchDTO
 import cz.livesport.networking.MatchParticipantDTO
+import cz.livesport.util.FlagProvider
+import cz.livesport.util.FlagProviderImpl
+
+internal interface UseCase<in INPUT, out OUTPUT> {
+    fun createModel(dataModel: INPUT): OUTPUT
+}
 
 internal class MatchRowUseCase(
     private val flagProvider: FlagProvider = FlagProviderImpl(),

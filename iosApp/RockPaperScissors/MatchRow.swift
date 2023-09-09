@@ -11,6 +11,7 @@ struct MatchRow: View {
 				.foregroundColor(model.isLive ? .red : .gray)
 				.font(.caption)
 				.fontWeight(.bold)
+				.fontDesign(.monospaced)
 
 			HStack {
 				Group {
@@ -22,7 +23,7 @@ struct MatchRow: View {
 						.fontDesign(.monospaced)
 						.foregroundColor(model.isLive ? .red : nil)
 				}
-				.font(.system(.body, weight: model.participantA.isWinner ? .bold : .regular))
+				.font(.system(.body, weight: model.participantA.isWinner ? .heavy : .regular))
 
 				Text("-")
 					.font(.system(.body, design: .monospaced))
@@ -37,7 +38,7 @@ struct MatchRow: View {
 						.frame(maxWidth: .infinity, alignment: .trailing)
 					Text(model.participantB.flag)
 				}
-				.font(.system(.body, weight: model.participantB.isWinner ? .bold : .regular))
+				.font(.system(.body, weight: model.participantB.isWinner ? .heavy : .regular))
 			}
 		}
 		.padding(.vertical, 8)
@@ -46,3 +47,50 @@ struct MatchRow: View {
 }
 
 extension MatchRowComponentModel: Identifiable {}
+
+struct MatchRow_Previews: PreviewProvider {
+
+	static var previews: some View {
+		VStack {
+			MatchRow(
+				model: .init(
+					participantA: .init(
+						name: "Jana",
+						score: "3",
+						flag: "🇸🇰",
+						isWinner: true
+					),
+					participantB: .init(
+						name: "Petr",
+						score: "2",
+						flag: "🇨🇿",
+						isWinner: false
+					),
+					rounds: "ROUND 42",
+					isLive: false,
+					configuration: nil
+				)
+			)
+
+			MatchRow(
+				model: .init(
+					participantA: .init(
+						name: "Alex",
+						score: "0",
+						flag: "🇸🇨",
+						isWinner: false
+					),
+					participantB: .init(
+						name: "Steve",
+						score: "0",
+						flag: "🇱🇰",
+						isWinner: false
+					),
+					rounds: "ROUND 999",
+					isLive: true,
+					configuration: nil
+				)
+			)
+		}
+	}
+}

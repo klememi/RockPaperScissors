@@ -1,4 +1,4 @@
-package cz.livesport.rps
+package cz.livesport.util
 
 internal interface FlagProvider {
 
@@ -12,28 +12,21 @@ internal class FlagProviderImpl: FlagProvider {
         "🇦🇱",
         "🇦🇷",
         "🇦🇿",
-        "🇦🇺",
         "🇧🇩",
         "🇧🇸",
         "🇧🇷",
         "🇧🇹",
         "🇰🇭",
         "🇧🇦",
-        "🇹🇩",
-        "🇨🇦",
         "🇨🇨",
-        "🇩🇰",
-        "🇨🇿",
         "🇭🇷",
-        "🇫🇷",
         "🇬🇷",
         "🇬🇱",
         "🇫🇯",
         "🇯🇵",
         "🇯🇲",
-        "🇸🇰",
         "🇿🇼",
     )
 
-    override fun getFlag(seed: Int): String = availableFlags[(3 * seed).mod(availableFlags.count())]
+    override fun getFlag(seed: Int): String = availableFlags[(seed * seed).mod(availableFlags.count())]
 }

@@ -15,7 +15,7 @@
 		4838AE0F2AA855E9006CC16E /* RPSKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4838AE0D2AA855E8006CC16E /* RPSKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4838AE122AA87C58006CC16E /* MatchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838AE112AA87C58006CC16E /* MatchRow.swift */; };
 		4838AE142AA87C7B006CC16E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838AE132AA87C7B006CC16E /* ViewModel.swift */; };
-		4838AE162AA88E75006CC16E /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838AE152AA88E75006CC16E /* Models.swift */; };
+		4838AE162AA88E75006CC16E /* RPSViewState+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838AE152AA88E75006CC16E /* RPSViewState+Placeholder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,7 +44,7 @@
 		4838AE0D2AA855E8006CC16E /* RPSKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RPSKit.framework; path = ../multiplatform/shared/build/bin/iosSimulatorArm64/debugFramework/RPSKit.framework; sourceTree = "<group>"; };
 		4838AE112AA87C58006CC16E /* MatchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRow.swift; sourceTree = "<group>"; };
 		4838AE132AA87C7B006CC16E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		4838AE152AA88E75006CC16E /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		4838AE152AA88E75006CC16E /* RPSViewState+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RPSViewState+Placeholder.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +82,7 @@
 				4838ADE12AA662C1006CC16E /* RockPaperScissorsApp.swift */,
 				4838ADE32AA662C1006CC16E /* ContentView.swift */,
 				4838AE132AA87C7B006CC16E /* ViewModel.swift */,
-				4838AE152AA88E75006CC16E /* Models.swift */,
+				4838AE152AA88E75006CC16E /* RPSViewState+Placeholder.swift */,
 				4838AE112AA87C58006CC16E /* MatchRow.swift */,
 				4838ADE52AA662C2006CC16E /* Assets.xcassets */,
 				4838ADE72AA662C2006CC16E /* RockPaperScissors.entitlements */,
@@ -197,7 +197,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$SRCROOT/../multiplatform\"\n./gradlew :shared:build\n";
+			shellScript = "cd \"$SRCROOT/../multiplatform\"\n./gradlew :shared:embedAndSignAppleFrameworkForXcode\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -210,7 +210,7 @@
 				4838ADE22AA662C1006CC16E /* RockPaperScissorsApp.swift in Sources */,
 				4838AE142AA87C7B006CC16E /* ViewModel.swift in Sources */,
 				4838AE122AA87C58006CC16E /* MatchRow.swift in Sources */,
-				4838AE162AA88E75006CC16E /* Models.swift in Sources */,
+				4838AE162AA88E75006CC16E /* RPSViewState+Placeholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
