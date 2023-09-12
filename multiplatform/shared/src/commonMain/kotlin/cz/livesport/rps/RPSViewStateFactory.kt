@@ -17,13 +17,13 @@ data class RPSViewState(
 )
 
 internal class RPSViewStateFactory(
-    private val useCase: UseCase<MatchDTO, MatchRowComponentModel> = MatchRowUseCase()
+    private val useCase: UseCase<Pair<MatchDTO, String>, MatchRowComponentModel> = MatchRowUseCase()
 ): ViewStateFactory<MatchesDTO, RPSStateManager.State, RPSViewState> {
 
     override fun create(model: MatchesDTO, state: RPSStateManager.State): RPSViewState =
         RPSViewState(
             title = model.title,
-            rows = model.matches.map { useCase.createModel(it) },
+            rows = model.matches.map { useCase.createModel(it to model.roundLabel) },
             language = state.language,
             project = state.project,
         )

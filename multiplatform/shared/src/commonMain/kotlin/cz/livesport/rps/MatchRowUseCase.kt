@@ -11,15 +11,18 @@ internal interface UseCase<in INPUT, out OUTPUT> {
 
 internal class MatchRowUseCase(
     private val flagProvider: FlagProvider = FlagProviderImpl(),
-): UseCase<MatchDTO, MatchRowComponentModel> {
+): UseCase<Pair<MatchDTO, String>, MatchRowComponentModel> {
 
-    override fun createModel(dataModel: MatchDTO): MatchRowComponentModel =
-        MatchRowComponentModel(
-            participantA = createParticipant(dataModel.participantA, dataModel.participantB.score, dataModel.isFinished),
-            participantB = createParticipant(dataModel.participantB, dataModel.participantA.score, dataModel.isFinished),
-            rounds = "ROUND ${dataModel.rounds}",
-            isLive = dataModel.isFinished.not(),
+    override fun createModel(dataModel: Pair<MatchDTO, String>): MatchRowComponentModel {
+        val match = dataModel.first
+        val roundLabel = dataModel.second
+        return MatchRowComponentModel(
+            participantA = createParticipant(match.participantA, match.participantB.score, match.isFinished),
+            participantB = createParticipant(match.participantB, match.participantA.score, match.isFinished),
+            rounds = "${roundLabel.uppercase()} ${match.rounds}",
+            isLive = match.isFinished.not(),
         )
+    }
 
     private fun createParticipant(
         model: MatchParticipantDTO,

@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 internal data class MatchesDTO(
     val matches: List<MatchDTO>,
     val title: String,
-    val resultLabel: String,
+    val roundLabel: String,
 )
 
 @Serializable
