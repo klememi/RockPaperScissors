@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapNotNull
-import org.mobilenativefoundation.store.store5.StoreReadResponse
 
 interface ViewStateProvider<out VIEW_STATE : Any, in VIEW_EVENT : Any> {
     fun changeState(event: VIEW_EVENT)
@@ -22,7 +21,7 @@ class RPSViewStateProvider internal constructor(
     private val repository: Repository,
     private val viewStateFactory: ViewStateFactory<MatchesDTO, RPSStateManager.State, RPSViewState>,
     private val stateManager: StateManager<RPSStateManager.State, RPSStateManager.Event>,
-): ViewStateProvider<StoreReadResponse<RPSViewState>, RPSStateManager.Event> {
+): ViewStateProvider<RPSViewState, RPSStateManager.Event> {
 
     constructor() : this(
         repository = RepositoryImpl(),
@@ -36,23 +35,19 @@ class RPSViewStateProvider internal constructor(
     )
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    override fun getViewState(): Flow<StoreReadResponse<RPSViewState>> =
-        periodicUpdater().flatMapLatest {
-            stateManager.state
-                .flatMapLatest { state ->
-                    repository.matches(state.language.code, state.project.code)
-                        .map { matchesResponse -> matchesResponse to state }
-                }.mapNotNull { (response, state) ->
-                    when (response) {
-                        is StoreReadResponse.Data -> StoreReadResponse.Data(
-                            viewStateFactory.create(response.value, state),
-                            response.origin
-                        )
-
-                        else -> null
+    override fun getViewState(): Flow<RPSViewState> =
+        periodicUpdater()
+            .flatMapLatest {
+                stateManager.state
+                    .flatMapLatest { state ->
+                        repository.matches(state.language.code, state.project.code)
+                            .map { matchesResponse -> matchesResponse to state }
+                    }.mapNotNull { (response, state) ->
+                        response.dataOrNull()?.let {
+                            viewStateFactory.create(it, state)
+                        }
                     }
-                }
-        }
+            }
 
     override fun changeState(event: RPSStateManager.Event) {
         stateManager.changeState(event)

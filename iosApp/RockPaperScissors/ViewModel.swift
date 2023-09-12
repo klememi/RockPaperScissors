@@ -14,10 +14,8 @@ final class ViewModel: ObservableObject {
 
 	@MainActor
 	func run() async {
-		for await response in viewStateProvider.getViewState() {
-			if let viewState = response.dataOrNull() {
-				self.viewState = viewState
-			}
+		for await viewState in viewStateProvider.getViewState() {
+			self.viewState = viewState
 		}
 	}
 }
