@@ -16,6 +16,7 @@
 		4838AE122AA87C58006CC16E /* MatchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838AE112AA87C58006CC16E /* MatchRow.swift */; };
 		4838AE142AA87C7B006CC16E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838AE132AA87C7B006CC16E /* ViewModel.swift */; };
 		4838AE162AA88E75006CC16E /* RPSViewState+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838AE152AA88E75006CC16E /* RPSViewState+Placeholder.swift */; };
+		48A1D66D2AB1DEFF005329D9 /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A1D66C2AB1DEFF005329D9 /* Participant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +46,7 @@
 		4838AE112AA87C58006CC16E /* MatchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRow.swift; sourceTree = "<group>"; };
 		4838AE132AA87C7B006CC16E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4838AE152AA88E75006CC16E /* RPSViewState+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RPSViewState+Placeholder.swift"; sourceTree = "<group>"; };
+		48A1D66C2AB1DEFF005329D9 /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				4838AE132AA87C7B006CC16E /* ViewModel.swift */,
 				4838AE152AA88E75006CC16E /* RPSViewState+Placeholder.swift */,
 				4838AE112AA87C58006CC16E /* MatchRow.swift */,
+				48A1D66C2AB1DEFF005329D9 /* Participant.swift */,
 				4838ADE52AA662C2006CC16E /* Assets.xcassets */,
 				4838ADE72AA662C2006CC16E /* RockPaperScissors.entitlements */,
 				4838ADE82AA662C2006CC16E /* Preview Content */,
@@ -211,6 +214,7 @@
 				4838AE142AA87C7B006CC16E /* ViewModel.swift in Sources */,
 				4838AE122AA87C58006CC16E /* MatchRow.swift in Sources */,
 				4838AE162AA88E75006CC16E /* RPSViewState+Placeholder.swift in Sources */,
+				48A1D66D2AB1DEFF005329D9 /* Participant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

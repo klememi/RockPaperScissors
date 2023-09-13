@@ -14,35 +14,17 @@ struct MatchRow: View {
 				.fontDesign(.monospaced)
 
 			HStack {
-				Group {
-					Text(model.participantA.flag)
-					Text(model.participantA.name)
-						.frame(maxWidth: .infinity, alignment: .leading)
-					Spacer()
-					Text(String(model.participantA.score))
-						.fontDesign(.monospaced)
-						.foregroundColor(model.isLive ? .red : nil)
-				}
-				.font(.system(.body, weight: model.participantA.isWinner ? .heavy : .regular))
+				Participant(model: model.participantA, isLive: model.isLive)
 
 				Text("-")
 					.font(.system(.body, design: .monospaced))
 					.foregroundColor(model.isLive ? .red : nil)
 
-				Group {
-					Text(String(model.participantB.score))
-						.fontDesign(.monospaced)
-						.foregroundColor(model.isLive ? .red : nil)
-					Spacer()
-					Text(model.participantB.name)
-						.frame(maxWidth: .infinity, alignment: .trailing)
-					Text(model.participantB.flag)
-				}
-				.font(.system(.body, weight: model.participantB.isWinner ? .heavy : .regular))
+				Participant(model: model.participantB, isLive: model.isLive)
+				.environment(\.layoutDirection, .rightToLeft)
 			}
 		}
-		.padding(.vertical, 8)
-		.padding(.horizontal, 16)
+		.padding(8)
 	}
 }
 
@@ -67,8 +49,7 @@ struct MatchRow_Previews: PreviewProvider {
 						isWinner: false
 					),
 					rounds: "ROUND 42",
-					isLive: false,
-					configuration: nil
+					isLive: false
 				)
 			)
 
@@ -87,8 +68,7 @@ struct MatchRow_Previews: PreviewProvider {
 						isWinner: false
 					),
 					rounds: "ROUND 999",
-					isLive: true,
-					configuration: nil
+					isLive: true
 				)
 			)
 		}

@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-internal interface StateManager<out STATE : Any, in VIEW_EVENT : Any> {
+internal interface StateManager<STATE : Any, VIEW_EVENT : Any> {
     val state: Flow<STATE>
     fun changeState(viewEvent: VIEW_EVENT)
 }
@@ -14,6 +14,16 @@ internal interface StateManager<out STATE : Any, in VIEW_EVENT : Any> {
 class RPSStateManager(
     state: State
 ): StateManager<RPSStateManager.State, RPSStateManager.Event> {
+
+    data class State(
+        val language: Language,
+        val project: Project,
+    )
+
+    sealed interface Event {
+        data class SetLanguage(val language: Language) : Event
+        data class SetProject(val project: Project) : Event
+    }
 
     private val mutableState = MutableStateFlow(state)
 
@@ -24,15 +34,5 @@ class RPSStateManager(
             is Event.SetLanguage -> mutableState.value = mutableState.value.copy(language = viewEvent.language)
             is Event.SetProject -> mutableState.value = mutableState.value.copy(project = viewEvent.project)
         }
-    }
-
-    data class State(
-        val language: Language,
-        val project: Project,
-    )
-
-    sealed interface Event {
-        data class SetLanguage(val language: Language) : Event
-        data class SetProject(val project: Project) : Event
     }
 }

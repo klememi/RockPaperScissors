@@ -28,12 +28,7 @@ internal class RepositoryImpl(
             fetcher = Fetcher.of { key: RPSMatchesKey ->
                 api.getMatches(key.project, key.lang)
             }
-        ).cachePolicy(
-            MemoryPolicy
-                .builder<RPSMatchesKey, MatchesDTO>()
-                .setExpireAfterAccess(2.seconds)
-                .build()
-        ).build()
+        ).disableCache().build()
 ): Repository {
 
     override fun matches(language: String, project: String): Flow<StoreReadResponse<MatchesDTO>> =
