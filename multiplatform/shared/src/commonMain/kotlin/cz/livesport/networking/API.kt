@@ -1,12 +1,14 @@
 package cz.livesport.networking
 
+import cz.livesport.util.Language
+import cz.livesport.util.Project
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
 import kotlinx.serialization.json.Json
 
 internal interface API {
-    suspend fun getMatches(project: String, lang: String): MatchesDTO
+    suspend fun getMatches(project: Project, lang: Language): MatchesDTO
 }
 
 internal class APIImpl(
@@ -16,10 +18,10 @@ internal class APIImpl(
     },
 ): API {
 
-    override suspend fun getMatches(project: String, lang: String): MatchesDTO =
+    override suspend fun getMatches(project: Project, lang: Language): MatchesDTO =
         Json.decodeFromString(
             client.get(
-                urlStringBuilder(project, lang)
+                urlStringBuilder(project.code, lang.code)
             ).bodyAsText()
         )
 }

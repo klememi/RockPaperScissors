@@ -36,18 +36,13 @@ class RPSViewStateProvider internal constructor(
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun getViewState(): Flow<RPSViewState> =
-        periodicUpdater()
-            .flatMapLatest {
-                stateManager.state
-                    .flatMapLatest { state ->
-                        repository.matches(state.language.code, state.project.code)
-                            .map { matchesResponse -> matchesResponse to state }
-                    }.mapNotNull { (response, state) ->
-                        response.dataOrNull()?.let {
-                            viewStateFactory.create(it, state)
-                        }
-                    }
+        periodicUpdater().flatMapLatest {
+            stateManager.state.flatMapLatest { state ->
+                repository.matches(state.language, state.project)
+                    .mapNotNull { it.dataOrNull() }
+                    .map { viewStateFactory.create(it, state) }
             }
+        }
 
     override fun changeState(event: RPSStateManager.Event) {
         stateManager.changeState(event)
